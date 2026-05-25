@@ -9,38 +9,256 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as ParceriasRouteImport } from './routes/parcerias'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as FuncionalidadesRouteImport } from './routes/funcionalidades'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ContactosRouteImport } from './routes/contactos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardNotificacoesRouteImport } from './routes/dashboard.notificacoes'
+import { Route as DashboardIaRouteImport } from './routes/dashboard.ia'
+import { Route as DashboardEventosRouteImport } from './routes/dashboard.eventos'
+import { Route as DashboardEstudantesRouteImport } from './routes/dashboard.estudantes'
+import { Route as DashboardCareerRouteImport } from './routes/dashboard.career'
+import { Route as DashboardBiometriaRouteImport } from './routes/dashboard.biometria'
+import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard.analytics'
 
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParceriasRoute = ParceriasRouteImport.update({
+  id: '/parcerias',
+  path: '/parcerias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuncionalidadesRoute = FuncionalidadesRouteImport.update({
+  id: '/funcionalidades',
+  path: '/funcionalidades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactosRoute = ContactosRouteImport.update({
+  id: '/contactos',
+  path: '/contactos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNotificacoesRoute = DashboardNotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardIaRoute = DashboardIaRouteImport.update({
+  id: '/ia',
+  path: '/ia',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEventosRoute = DashboardEventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEstudantesRoute = DashboardEstudantesRouteImport.update({
+  id: '/estudantes',
+  path: '/estudantes',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCareerRoute = DashboardCareerRouteImport.update({
+  id: '/career',
+  path: '/career',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBiometriaRoute = DashboardBiometriaRouteImport.update({
+  id: '/biometria',
+  path: '/biometria',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardAnalyticsRoute = DashboardAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contactos': typeof ContactosRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/funcionalidades': typeof FuncionalidadesRoute
+  '/galeria': typeof GaleriaRoute
+  '/parcerias': typeof ParceriasRoute
+  '/sobre': typeof SobreRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/dashboard/biometria': typeof DashboardBiometriaRoute
+  '/dashboard/career': typeof DashboardCareerRoute
+  '/dashboard/estudantes': typeof DashboardEstudantesRoute
+  '/dashboard/eventos': typeof DashboardEventosRoute
+  '/dashboard/ia': typeof DashboardIaRoute
+  '/dashboard/notificacoes': typeof DashboardNotificacoesRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contactos': typeof ContactosRoute
+  '/funcionalidades': typeof FuncionalidadesRoute
+  '/galeria': typeof GaleriaRoute
+  '/parcerias': typeof ParceriasRoute
+  '/sobre': typeof SobreRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/dashboard/biometria': typeof DashboardBiometriaRoute
+  '/dashboard/career': typeof DashboardCareerRoute
+  '/dashboard/estudantes': typeof DashboardEstudantesRoute
+  '/dashboard/eventos': typeof DashboardEventosRoute
+  '/dashboard/ia': typeof DashboardIaRoute
+  '/dashboard/notificacoes': typeof DashboardNotificacoesRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contactos': typeof ContactosRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/funcionalidades': typeof FuncionalidadesRoute
+  '/galeria': typeof GaleriaRoute
+  '/parcerias': typeof ParceriasRoute
+  '/sobre': typeof SobreRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/dashboard/biometria': typeof DashboardBiometriaRoute
+  '/dashboard/career': typeof DashboardCareerRoute
+  '/dashboard/estudantes': typeof DashboardEstudantesRoute
+  '/dashboard/eventos': typeof DashboardEventosRoute
+  '/dashboard/ia': typeof DashboardIaRoute
+  '/dashboard/notificacoes': typeof DashboardNotificacoesRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contactos'
+    | '/dashboard'
+    | '/funcionalidades'
+    | '/galeria'
+    | '/parcerias'
+    | '/sobre'
+    | '/dashboard/analytics'
+    | '/dashboard/biometria'
+    | '/dashboard/career'
+    | '/dashboard/estudantes'
+    | '/dashboard/eventos'
+    | '/dashboard/ia'
+    | '/dashboard/notificacoes'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contactos'
+    | '/funcionalidades'
+    | '/galeria'
+    | '/parcerias'
+    | '/sobre'
+    | '/dashboard/analytics'
+    | '/dashboard/biometria'
+    | '/dashboard/career'
+    | '/dashboard/estudantes'
+    | '/dashboard/eventos'
+    | '/dashboard/ia'
+    | '/dashboard/notificacoes'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/contactos'
+    | '/dashboard'
+    | '/funcionalidades'
+    | '/galeria'
+    | '/parcerias'
+    | '/sobre'
+    | '/dashboard/analytics'
+    | '/dashboard/biometria'
+    | '/dashboard/career'
+    | '/dashboard/estudantes'
+    | '/dashboard/eventos'
+    | '/dashboard/ia'
+    | '/dashboard/notificacoes'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactosRoute: typeof ContactosRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  FuncionalidadesRoute: typeof FuncionalidadesRoute
+  GaleriaRoute: typeof GaleriaRoute
+  ParceriasRoute: typeof ParceriasRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parcerias': {
+      id: '/parcerias'
+      path: '/parcerias'
+      fullPath: '/parcerias'
+      preLoaderRoute: typeof ParceriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/funcionalidades': {
+      id: '/funcionalidades'
+      path: '/funcionalidades'
+      fullPath: '/funcionalidades'
+      preLoaderRoute: typeof FuncionalidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contactos': {
+      id: '/contactos'
+      path: '/contactos'
+      fullPath: '/contactos'
+      preLoaderRoute: typeof ContactosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +266,100 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/notificacoes': {
+      id: '/dashboard/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/dashboard/notificacoes'
+      preLoaderRoute: typeof DashboardNotificacoesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/ia': {
+      id: '/dashboard/ia'
+      path: '/ia'
+      fullPath: '/dashboard/ia'
+      preLoaderRoute: typeof DashboardIaRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/eventos': {
+      id: '/dashboard/eventos'
+      path: '/eventos'
+      fullPath: '/dashboard/eventos'
+      preLoaderRoute: typeof DashboardEventosRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/estudantes': {
+      id: '/dashboard/estudantes'
+      path: '/estudantes'
+      fullPath: '/dashboard/estudantes'
+      preLoaderRoute: typeof DashboardEstudantesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/career': {
+      id: '/dashboard/career'
+      path: '/career'
+      fullPath: '/dashboard/career'
+      preLoaderRoute: typeof DashboardCareerRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/biometria': {
+      id: '/dashboard/biometria'
+      path: '/biometria'
+      fullPath: '/dashboard/biometria'
+      preLoaderRoute: typeof DashboardBiometriaRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/analytics': {
+      id: '/dashboard/analytics'
+      path: '/analytics'
+      fullPath: '/dashboard/analytics'
+      preLoaderRoute: typeof DashboardAnalyticsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
+  DashboardBiometriaRoute: typeof DashboardBiometriaRoute
+  DashboardCareerRoute: typeof DashboardCareerRoute
+  DashboardEstudantesRoute: typeof DashboardEstudantesRoute
+  DashboardEventosRoute: typeof DashboardEventosRoute
+  DashboardIaRoute: typeof DashboardIaRoute
+  DashboardNotificacoesRoute: typeof DashboardNotificacoesRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAnalyticsRoute: DashboardAnalyticsRoute,
+  DashboardBiometriaRoute: DashboardBiometriaRoute,
+  DashboardCareerRoute: DashboardCareerRoute,
+  DashboardEstudantesRoute: DashboardEstudantesRoute,
+  DashboardEventosRoute: DashboardEventosRoute,
+  DashboardIaRoute: DashboardIaRoute,
+  DashboardNotificacoesRoute: DashboardNotificacoesRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactosRoute: ContactosRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  FuncionalidadesRoute: FuncionalidadesRoute,
+  GaleriaRoute: GaleriaRoute,
+  ParceriasRoute: ParceriasRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
