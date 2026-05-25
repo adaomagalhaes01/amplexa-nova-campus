@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as ParceriasRouteImport } from './routes/parcerias'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as FuncionalidadesRouteImport } from './routes/funcionalidades'
+import { Route as ContactosRouteImport } from './routes/contactos'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParceriasRoute = ParceriasRouteImport.update({
+  id: '/parcerias',
+  path: '/parcerias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuncionalidadesRoute = FuncionalidadesRouteImport.update({
+  id: '/funcionalidades',
+  path: '/funcionalidades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactosRoute = ContactosRouteImport.update({
+  id: '/contactos',
+  path: '/contactos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,102 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contactos': typeof ContactosRoute
+  '/funcionalidades': typeof FuncionalidadesRoute
+  '/galeria': typeof GaleriaRoute
+  '/parcerias': typeof ParceriasRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contactos': typeof ContactosRoute
+  '/funcionalidades': typeof FuncionalidadesRoute
+  '/galeria': typeof GaleriaRoute
+  '/parcerias': typeof ParceriasRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contactos': typeof ContactosRoute
+  '/funcionalidades': typeof FuncionalidadesRoute
+  '/galeria': typeof GaleriaRoute
+  '/parcerias': typeof ParceriasRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contactos'
+    | '/funcionalidades'
+    | '/galeria'
+    | '/parcerias'
+    | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contactos'
+    | '/funcionalidades'
+    | '/galeria'
+    | '/parcerias'
+    | '/sobre'
+  id:
+    | '__root__'
+    | '/'
+    | '/contactos'
+    | '/funcionalidades'
+    | '/galeria'
+    | '/parcerias'
+    | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactosRoute: typeof ContactosRoute
+  FuncionalidadesRoute: typeof FuncionalidadesRoute
+  GaleriaRoute: typeof GaleriaRoute
+  ParceriasRoute: typeof ParceriasRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parcerias': {
+      id: '/parcerias'
+      path: '/parcerias'
+      fullPath: '/parcerias'
+      preLoaderRoute: typeof ParceriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/funcionalidades': {
+      id: '/funcionalidades'
+      path: '/funcionalidades'
+      fullPath: '/funcionalidades'
+      preLoaderRoute: typeof FuncionalidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contactos': {
+      id: '/contactos'
+      path: '/contactos'
+      fullPath: '/contactos'
+      preLoaderRoute: typeof ContactosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +157,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactosRoute: ContactosRoute,
+  FuncionalidadesRoute: FuncionalidadesRoute,
+  GaleriaRoute: GaleriaRoute,
+  ParceriasRoute: ParceriasRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
