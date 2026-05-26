@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as ParceriasRouteImport } from './routes/parcerias'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as FuncionalidadesRouteImport } from './routes/funcionalidades'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -21,6 +22,7 @@ import { Route as DashboardNotificacoesRouteImport } from './routes/dashboard.no
 import { Route as DashboardIaRouteImport } from './routes/dashboard.ia'
 import { Route as DashboardEventosRouteImport } from './routes/dashboard.eventos'
 import { Route as DashboardEstudantesRouteImport } from './routes/dashboard.estudantes'
+import { Route as DashboardEstudanteRouteImport } from './routes/dashboard.estudante'
 import { Route as DashboardCareerRouteImport } from './routes/dashboard.career'
 import { Route as DashboardBiometriaRouteImport } from './routes/dashboard.biometria'
 import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard.analytics'
@@ -33,6 +35,11 @@ const SobreRoute = SobreRouteImport.update({
 const ParceriasRoute = ParceriasRouteImport.update({
   id: '/parcerias',
   path: '/parcerias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GaleriaRoute = GaleriaRouteImport.update({
@@ -85,6 +92,11 @@ const DashboardEstudantesRoute = DashboardEstudantesRouteImport.update({
   path: '/estudantes',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardEstudanteRoute = DashboardEstudanteRouteImport.update({
+  id: '/estudante',
+  path: '/estudante',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardCareerRoute = DashboardCareerRouteImport.update({
   id: '/career',
   path: '/career',
@@ -107,11 +119,13 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/funcionalidades': typeof FuncionalidadesRoute
   '/galeria': typeof GaleriaRoute
+  '/login': typeof LoginRoute
   '/parcerias': typeof ParceriasRoute
   '/sobre': typeof SobreRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/biometria': typeof DashboardBiometriaRoute
   '/dashboard/career': typeof DashboardCareerRoute
+  '/dashboard/estudante': typeof DashboardEstudanteRoute
   '/dashboard/estudantes': typeof DashboardEstudantesRoute
   '/dashboard/eventos': typeof DashboardEventosRoute
   '/dashboard/ia': typeof DashboardIaRoute
@@ -123,11 +137,13 @@ export interface FileRoutesByTo {
   '/contactos': typeof ContactosRoute
   '/funcionalidades': typeof FuncionalidadesRoute
   '/galeria': typeof GaleriaRoute
+  '/login': typeof LoginRoute
   '/parcerias': typeof ParceriasRoute
   '/sobre': typeof SobreRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/biometria': typeof DashboardBiometriaRoute
   '/dashboard/career': typeof DashboardCareerRoute
+  '/dashboard/estudante': typeof DashboardEstudanteRoute
   '/dashboard/estudantes': typeof DashboardEstudantesRoute
   '/dashboard/eventos': typeof DashboardEventosRoute
   '/dashboard/ia': typeof DashboardIaRoute
@@ -141,11 +157,13 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/funcionalidades': typeof FuncionalidadesRoute
   '/galeria': typeof GaleriaRoute
+  '/login': typeof LoginRoute
   '/parcerias': typeof ParceriasRoute
   '/sobre': typeof SobreRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/biometria': typeof DashboardBiometriaRoute
   '/dashboard/career': typeof DashboardCareerRoute
+  '/dashboard/estudante': typeof DashboardEstudanteRoute
   '/dashboard/estudantes': typeof DashboardEstudantesRoute
   '/dashboard/eventos': typeof DashboardEventosRoute
   '/dashboard/ia': typeof DashboardIaRoute
@@ -160,11 +178,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/funcionalidades'
     | '/galeria'
+    | '/login'
     | '/parcerias'
     | '/sobre'
     | '/dashboard/analytics'
     | '/dashboard/biometria'
     | '/dashboard/career'
+    | '/dashboard/estudante'
     | '/dashboard/estudantes'
     | '/dashboard/eventos'
     | '/dashboard/ia'
@@ -176,11 +196,13 @@ export interface FileRouteTypes {
     | '/contactos'
     | '/funcionalidades'
     | '/galeria'
+    | '/login'
     | '/parcerias'
     | '/sobre'
     | '/dashboard/analytics'
     | '/dashboard/biometria'
     | '/dashboard/career'
+    | '/dashboard/estudante'
     | '/dashboard/estudantes'
     | '/dashboard/eventos'
     | '/dashboard/ia'
@@ -193,11 +215,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/funcionalidades'
     | '/galeria'
+    | '/login'
     | '/parcerias'
     | '/sobre'
     | '/dashboard/analytics'
     | '/dashboard/biometria'
     | '/dashboard/career'
+    | '/dashboard/estudante'
     | '/dashboard/estudantes'
     | '/dashboard/eventos'
     | '/dashboard/ia'
@@ -211,6 +235,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRouteWithChildren
   FuncionalidadesRoute: typeof FuncionalidadesRoute
   GaleriaRoute: typeof GaleriaRoute
+  LoginRoute: typeof LoginRoute
   ParceriasRoute: typeof ParceriasRoute
   SobreRoute: typeof SobreRoute
 }
@@ -229,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/parcerias'
       fullPath: '/parcerias'
       preLoaderRoute: typeof ParceriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/galeria': {
@@ -301,6 +333,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardEstudantesRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/estudante': {
+      id: '/dashboard/estudante'
+      path: '/estudante'
+      fullPath: '/dashboard/estudante'
+      preLoaderRoute: typeof DashboardEstudanteRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/career': {
       id: '/dashboard/career'
       path: '/career'
@@ -329,6 +368,7 @@ interface DashboardRouteChildren {
   DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
   DashboardBiometriaRoute: typeof DashboardBiometriaRoute
   DashboardCareerRoute: typeof DashboardCareerRoute
+  DashboardEstudanteRoute: typeof DashboardEstudanteRoute
   DashboardEstudantesRoute: typeof DashboardEstudantesRoute
   DashboardEventosRoute: typeof DashboardEventosRoute
   DashboardIaRoute: typeof DashboardIaRoute
@@ -340,6 +380,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardAnalyticsRoute: DashboardAnalyticsRoute,
   DashboardBiometriaRoute: DashboardBiometriaRoute,
   DashboardCareerRoute: DashboardCareerRoute,
+  DashboardEstudanteRoute: DashboardEstudanteRoute,
   DashboardEstudantesRoute: DashboardEstudantesRoute,
   DashboardEventosRoute: DashboardEventosRoute,
   DashboardIaRoute: DashboardIaRoute,
@@ -357,9 +398,20 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRouteWithChildren,
   FuncionalidadesRoute: FuncionalidadesRoute,
   GaleriaRoute: GaleriaRoute,
+  LoginRoute: LoginRoute,
   ParceriasRoute: ParceriasRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -52,11 +52,8 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/dashboard">Entrar</Link>
-          </Button>
           <Button asChild size="sm" className="gradient-primary text-primary-foreground shadow-glow border-0">
-            <Link to="/dashboard">Acessar Plataforma</Link>
+            <Link to="/login">Acessar Plataforma</Link>
           </Button>
         </div>
 
@@ -84,7 +81,7 @@ export function Navbar() {
             ))}
             <div className="pt-2 flex gap-2">
               <Button asChild size="sm" className="flex-1 gradient-primary text-primary-foreground border-0">
-                <Link to="/dashboard" onClick={() => setOpen(false)}>Acessar Plataforma</Link>
+                <Link to="/login" onClick={() => setOpen(false)}>Acessar Plataforma</Link>
               </Button>
             </div>
           </div>

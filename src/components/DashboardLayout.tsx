@@ -12,6 +12,7 @@ import logoAmplexa from "@/assets/logo-amplexa.jpeg";
 
 const nav = [
   { to: "/dashboard", icon: LayoutDashboard, label: "Overview" },
+  { to: "/dashboard/estudante", icon: GraduationCap, label: "Área do Aluno" },
   { to: "/dashboard/estudantes", icon: Users, label: "Estudantes" },
   { to: "/dashboard/ia", icon: Brain, label: "IA Académica" },
   { to: "/dashboard/career", icon: Briefcase, label: "Career Connect" },
