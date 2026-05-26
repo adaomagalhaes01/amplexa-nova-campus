@@ -5,6 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import logoUor from "@/assets/logo-uor.png";
 import logoAmplexa from "@/assets/logo-amplexa.jpeg";
+import loginHero from "@/assets/login-hero.jpg";
+
+
 
 export const Route = createFileRoute("/login")({
   component: Login,
@@ -12,16 +15,17 @@ export const Route = createFileRoute("/login")({
 
 function Login() {
   const [view, setView] = useState<"student" | "separate">("student");
+  const [mode, setMode] = useState<"login" | "signup">("login");
 
   return (
     <div className="min-h-screen w-full flex flex-col md:flex-row bg-background">
       {/* Left side - Image (50%) */}
       <div className="hidden md:block w-1/2 relative bg-muted">
         {/* Usando a imagem solicitada */}
-        <div className="absolute inset-0 bg-black/20 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
         <img
-          src="/INSCRIÇÕES ABERTAS A SUA HISTÓRIA DE SUCESSO COMEÇA AQUI!A Universidade Óscar Ribas comunica, qu.jpg"
-          alt="Login"
+          src={loginHero}
+          alt="Universidade Óscar Ribas — A minha história de sucesso começa aqui"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-12 text-white">
