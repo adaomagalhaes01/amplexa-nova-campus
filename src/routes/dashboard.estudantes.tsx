@@ -18,9 +18,9 @@ const students = [
 ];
 
 const statusColor: Record<string, string> = {
-  "Aprovado": "bg-primary/10 text-primary",
+  Aprovado: "bg-primary/10 text-primary",
   "Em risco": "bg-accent/15 text-accent",
-  "Reprovado": "bg-destructive/15 text-destructive",
+  Reprovado: "bg-destructive/15 text-destructive",
 };
 
 function Estudantes() {
@@ -36,8 +36,12 @@ function Estudantes() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Procurar estudante…" className="pl-9" />
           </div>
-          <Button variant="outline"><Filter className="h-4 w-4 mr-2" /> Filtros</Button>
-          <Button variant="outline"><Download className="h-4 w-4 mr-2" /> Exportar</Button>
+          <Button variant="outline">
+            <Filter className="h-4 w-4 mr-2" /> Filtros
+          </Button>
+          <Button variant="outline">
+            <Download className="h-4 w-4 mr-2" /> Exportar
+          </Button>
         </div>
         <div className="overflow-x-auto -mx-4">
           <table className="w-full text-sm min-w-[700px]">
@@ -57,7 +61,13 @@ function Estudantes() {
                 <tr key={s.n} className="border-b last:border-0 hover:bg-muted/30 transition">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full gradient-primary text-primary-foreground text-xs font-semibold flex items-center justify-center">{s.n.split(" ").map(x=>x[0]).slice(0,2).join("")}</div>
+                      <div className="h-8 w-8 rounded-full gradient-primary text-primary-foreground text-xs font-semibold flex items-center justify-center">
+                        {s.n
+                          .split(" ")
+                          .map((x) => x[0])
+                          .slice(0, 2)
+                          .join("")}
+                      </div>
                       <span className="font-medium">{s.n}</span>
                     </div>
                   </td>
@@ -65,8 +75,14 @@ function Estudantes() {
                   <td className="px-4 py-3 text-muted-foreground">{s.a}</td>
                   <td className="px-4 py-3 font-medium">{s.f}</td>
                   <td className="px-4 py-3 font-semibold">{s.m}</td>
-                  <td className="px-4 py-3"><Badge className={`${statusColor[s.s]} border-0`}>{s.s}</Badge></td>
-                  <td className="px-4 py-3"><Button size="icon" variant="ghost"><MoreHorizontal className="h-4 w-4" /></Button></td>
+                  <td className="px-4 py-3">
+                    <Badge className={`${statusColor[s.s]} border-0`}>{s.s}</Badge>
+                  </td>
+                  <td className="px-4 py-3">
+                    <Button size="icon" variant="ghost">
+                      <MoreHorizontal className="h-4 w-4" />
+                    </Button>
+                  </td>
                 </tr>
               ))}
             </tbody>

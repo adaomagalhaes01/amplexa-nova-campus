@@ -74,21 +74,50 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "AMPLEXA EDU OS — Plataforma Inteligente Universitária | UÓR" },
-      { name: "description", content: "Plataforma SaaS premium para gestão académica, biometria, IA e Career Connect da Universidade Óscar Ribas." },
-      { property: "og:title", content: "AMPLEXA EDU OS — Plataforma Inteligente Universitária | UÓR" },
-      { property: "og:description", content: "Plataforma SaaS premium para gestão académica, biometria, IA e Career Connect da Universidade Óscar Ribas." },
+      {
+        name: "description",
+        content:
+          "Plataforma SaaS premium para gestão académica, biometria, IA e Career Connect da Universidade Óscar Ribas.",
+      },
+      {
+        property: "og:title",
+        content: "AMPLEXA EDU OS — Plataforma Inteligente Universitária | UÓR",
+      },
+      {
+        property: "og:description",
+        content:
+          "Plataforma SaaS premium para gestão académica, biometria, IA e Career Connect da Universidade Óscar Ribas.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "AMPLEXA EDU OS — Plataforma Inteligente Universitária | UÓR" },
-      { name: "twitter:description", content: "Plataforma SaaS premium para gestão académica, biometria, IA e Career Connect da Universidade Óscar Ribas." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/fZqJBcolDrY2YefBvB367SEVvua2/social-images/social-1779748308152-WhatsApp_Image_2026-05-25_at_18.48.14.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/fZqJBcolDrY2YefBvB367SEVvua2/social-images/social-1779748308152-WhatsApp_Image_2026-05-25_at_18.48.14.webp" },
+      {
+        name: "twitter:title",
+        content: "AMPLEXA EDU OS — Plataforma Inteligente Universitária | UÓR",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Plataforma SaaS premium para gestão académica, biometria, IA e Career Connect da Universidade Óscar Ribas.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/fZqJBcolDrY2YefBvB367SEVvua2/social-images/social-1779748308152-WhatsApp_Image_2026-05-25_at_18.48.14.webp",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/fZqJBcolDrY2YefBvB367SEVvua2/social-images/social-1779748308152-WhatsApp_Image_2026-05-25_at_18.48.14.webp",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

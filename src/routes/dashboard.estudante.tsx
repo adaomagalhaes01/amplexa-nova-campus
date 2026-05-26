@@ -1,19 +1,37 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { BookOpen, Calendar, GraduationCap, Clock } from 'lucide-react'
+import { createFileRoute } from "@tanstack/react-router";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { BookOpen, Calendar, GraduationCap, Clock } from "lucide-react";
 
-export const Route = createFileRoute('/dashboard/estudante')({
+export const Route = createFileRoute("/dashboard/estudante")({
   component: AlunoDashboard,
-})
+});
 
 const cadeiras = [
-  { nome: 'Introdução à Contabilidade', professor: 'Dr. Silva', nota: 16, estado: 'Aprovado', creditos: 6 },
-  { nome: 'Microeconomia', professor: 'Dra. Costa', nota: 14, estado: 'Aprovado', creditos: 6 },
-  { nome: 'Matemática I', professor: 'Dr. Almeida', nota: null, estado: 'Em curso', creditos: 6 },
-  { nome: 'Introdução à Gestão', professor: 'Dr. Santos', nota: 18, estado: 'Aprovado', creditos: 5 },
-  { nome: 'Direito Empresarial', professor: 'Dra. Lima', nota: null, estado: 'Em curso', creditos: 6 },
-]
+  {
+    nome: "Introdução à Contabilidade",
+    professor: "Dr. Silva",
+    nota: 16,
+    estado: "Aprovado",
+    creditos: 6,
+  },
+  { nome: "Microeconomia", professor: "Dra. Costa", nota: 14, estado: "Aprovado", creditos: 6 },
+  { nome: "Matemática I", professor: "Dr. Almeida", nota: null, estado: "Em curso", creditos: 6 },
+  {
+    nome: "Introdução à Gestão",
+    professor: "Dr. Santos",
+    nota: 18,
+    estado: "Aprovado",
+    creditos: 5,
+  },
+  {
+    nome: "Direito Empresarial",
+    professor: "Dra. Lima",
+    nota: null,
+    estado: "Em curso",
+    creditos: 6,
+  },
+];
 
 function AlunoDashboard() {
   return (
@@ -24,8 +42,12 @@ function AlunoDashboard() {
           <p className="text-sm text-muted-foreground">Bem-vindo(a), Maria Soares (20240001)</p>
         </div>
         <div className="flex gap-2">
-          <Badge variant="outline" className="text-sm py-1">Contabilidade e Finanças</Badge>
-          <Badge variant="outline" className="text-sm py-1">1º Ano</Badge>
+          <Badge variant="outline" className="text-sm py-1">
+            Contabilidade e Finanças
+          </Badge>
+          <Badge variant="outline" className="text-sm py-1">
+            1º Ano
+          </Badge>
         </div>
       </div>
 
@@ -38,7 +60,7 @@ function AlunoDashboard() {
           <span className="text-2xl font-bold">16.0</span>
           <span className="text-xs text-green-500">+0.5 este semestre</span>
         </Card>
-        
+
         <Card className="p-4 flex flex-col gap-2 border-l-4 border-l-blue-500">
           <div className="flex justify-between items-center text-muted-foreground">
             <span className="text-sm font-medium">Cadeiras em Curso</span>
@@ -87,14 +109,20 @@ function AlunoDashboard() {
                   <td className="px-4 py-3 text-muted-foreground">{c.professor}</td>
                   <td className="px-4 py-3">{c.creditos} ECTS</td>
                   <td className="px-4 py-3">
-                    <Badge variant={c.estado === 'Aprovado' ? 'default' : 'secondary'} 
-                           className={c.estado === 'Aprovado' ? 'bg-green-500/10 text-green-600 hover:bg-green-500/20' : ''}>
+                    <Badge
+                      variant={c.estado === "Aprovado" ? "default" : "secondary"}
+                      className={
+                        c.estado === "Aprovado"
+                          ? "bg-green-500/10 text-green-600 hover:bg-green-500/20"
+                          : ""
+                      }
+                    >
                       {c.estado}
                     </Badge>
                   </td>
                   <td className="px-4 py-3 text-right font-bold">
                     {c.nota ? (
-                      <span className={c.nota >= 10 ? 'text-green-600' : 'text-red-600'}>
+                      <span className={c.nota >= 10 ? "text-green-600" : "text-red-600"}>
                         {c.nota}
                       </span>
                     ) : (
@@ -108,5 +136,5 @@ function AlunoDashboard() {
         </div>
       </Card>
     </div>
-  )
+  );
 }

@@ -11,10 +11,12 @@ import event4 from "@/assets/event-debate.jpg";
 
 export const Route = createFileRoute("/galeria")({
   component: Galeria,
-  head: () => ({ meta: [
-    { title: "Galeria Universitária — AMPLEXA EDU OS" },
-    { name: "description", content: "Eventos, palestras, feiras e actividades da UÓR." },
-  ]}),
+  head: () => ({
+    meta: [
+      { title: "Galeria Universitária — AMPLEXA EDU OS" },
+      { name: "description", content: "Eventos, palestras, feiras e actividades da UÓR." },
+    ],
+  }),
 });
 
 const items = [
@@ -39,18 +41,28 @@ function Galeria() {
     <SiteLayout>
       <section className="py-16 hero-bg">
         <div className="mx-auto max-w-5xl px-4 text-center">
-          <Badge variant="outline" className="mb-4">Galeria</Badge>
+          <Badge variant="outline" className="mb-4">
+            Galeria
+          </Badge>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Momentos da vida universitária.</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Eventos, palestras, feiras e celebrações da Universidade Óscar Ribas.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Eventos, palestras, feiras e celebrações da Universidade Óscar Ribas.
+          </p>
         </div>
       </section>
       <section className="py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2 mb-8 justify-center">
             {cats.map((c) => (
-              <Button key={c} size="sm" variant={c === cat ? "default" : "outline"}
+              <Button
+                key={c}
+                size="sm"
+                variant={c === cat ? "default" : "outline"}
                 className={c === cat ? "gradient-primary text-primary-foreground border-0" : ""}
-                onClick={() => setCat(c)}>{c}</Button>
+                onClick={() => setCat(c)}
+              >
+                {c}
+              </Button>
             ))}
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
@@ -60,7 +72,12 @@ function Galeria() {
                 onClick={() => setOpen(it.src)}
                 className="break-inside-avoid rounded-2xl overflow-hidden cursor-pointer group relative shadow-soft hover:shadow-elegant transition"
               >
-                <img src={it.src} alt={it.t} loading="lazy" className="w-full transition-transform duration-500 group-hover:scale-105" />
+                <img
+                  src={it.src}
+                  alt={it.t}
+                  loading="lazy"
+                  className="w-full transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
                 <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition">
                   <div className="text-xs">{it.cat}</div>

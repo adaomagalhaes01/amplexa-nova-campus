@@ -20,14 +20,18 @@ function Career() {
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2"><Briefcase className="h-7 w-7 text-primary" /> Career Connect</h1>
-          <p className="text-sm text-muted-foreground">Marketplace de estágios e oportunidades profissionais.</p>
+          <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
+            <Briefcase className="h-7 w-7 text-primary" /> Career Connect
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Marketplace de estágios e oportunidades profissionais.
+          </p>
         </div>
         <Button className="gradient-primary text-primary-foreground border-0">Publicar vaga</Button>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {jobs.map((j) => (
-          <Card key={j.t+j.e} className="p-5 hover:shadow-elegant transition group">
+          <Card key={j.t + j.e} className="p-5 hover:shadow-elegant transition group">
             <div className="flex items-start justify-between mb-3">
               <div className="h-10 w-10 rounded-lg gradient-primary text-primary-foreground flex items-center justify-center">
                 <Building2 className="h-5 w-5" />
@@ -37,10 +41,18 @@ function Career() {
             <h3 className="font-semibold mb-1">{j.t}</h3>
             <p className="text-sm text-muted-foreground">{j.e}</p>
             <div className="flex items-center justify-between mt-4 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1"><MapPin className="h-3 w-3" /> {j.l}</span>
+              <span className="flex items-center gap-1">
+                <MapPin className="h-3 w-3" /> {j.l}
+              </span>
               <span>{j.n} vagas</span>
             </div>
-            <Button variant="outline" size="sm" className="w-full mt-4 group-hover:gradient-primary group-hover:text-primary-foreground group-hover:border-0 transition">Ver candidatos</Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full mt-4 group-hover:gradient-primary group-hover:text-primary-foreground group-hover:border-0 transition"
+            >
+              Ver candidatos
+            </Button>
           </Card>
         ))}
       </div>

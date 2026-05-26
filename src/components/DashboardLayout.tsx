@@ -1,8 +1,20 @@
 import { Link, useRouterState, Outlet } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  LayoutDashboard, Users, Brain, Briefcase, CalendarDays, Bell,
-  Fingerprint, BarChart3, GraduationCap, Settings, Menu, Search, ChevronLeft, LogOut
+  LayoutDashboard,
+  Users,
+  Brain,
+  Briefcase,
+  CalendarDays,
+  Bell,
+  Fingerprint,
+  BarChart3,
+  GraduationCap,
+  Settings,
+  Menu,
+  Search,
+  ChevronLeft,
+  LogOut,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -30,15 +42,22 @@ export function DashboardLayout() {
   return (
     <div className="min-h-screen flex bg-secondary/30">
       {/* Mobile overlay */}
-      {mobileOpen && <div className="fixed inset-0 bg-foreground/40 z-40 lg:hidden" onClick={() => setMobileOpen(false)} />}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-foreground/40 z-40 lg:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
 
       {/* Sidebar */}
-      <aside className={`
+      <aside
+        className={`
         fixed lg:sticky top-0 left-0 h-screen z-50 bg-sidebar text-sidebar-foreground
         transition-all duration-300 flex flex-col
         ${collapsed ? "w-20" : "w-64"}
         ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
-      `}>
+      `}
+      >
         <div className="p-4 flex items-center justify-between border-b border-sidebar-border">
           <Link to="/" className="flex items-center gap-2 min-w-0">
             <img src={logoUor} alt="UÓR" className="h-8 w-8 rounded shrink-0" />
@@ -49,8 +68,13 @@ export function DashboardLayout() {
               </>
             )}
           </Link>
-          <button onClick={() => setCollapsed(!collapsed)} className="hidden lg:block p-1 rounded hover:bg-sidebar-accent">
-            <ChevronLeft className={`h-4 w-4 transition-transform ${collapsed ? "rotate-180" : ""}`} />
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="hidden lg:block p-1 rounded hover:bg-sidebar-accent"
+          >
+            <ChevronLeft
+              className={`h-4 w-4 transition-transform ${collapsed ? "rotate-180" : ""}`}
+            />
           </button>
         </div>
 
@@ -63,12 +87,15 @@ export function DashboardLayout() {
                 to={n.to}
                 onClick={() => setMobileOpen(false)}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all relative
-                  ${active
-                    ? "bg-sidebar-accent text-sidebar-primary-foreground font-semibold"
-                    : "text-sidebar-foreground/70 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
+                  ${
+                    active
+                      ? "bg-sidebar-accent text-sidebar-primary-foreground font-semibold"
+                      : "text-sidebar-foreground/70 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
                   }`}
               >
-                {active && <span className="absolute left-0 top-2 bottom-2 w-1 gradient-accent rounded-r" />}
+                {active && (
+                  <span className="absolute left-0 top-2 bottom-2 w-1 gradient-accent rounded-r" />
+                )}
                 <n.icon className="h-5 w-5 shrink-0" />
                 {!collapsed && <span className="truncate">{n.label}</span>}
               </Link>
@@ -77,11 +104,17 @@ export function DashboardLayout() {
         </nav>
 
         <div className="p-3 border-t border-sidebar-border space-y-1">
-          <Link to="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground/70 hover:bg-sidebar-accent">
+          <Link
+            to="/dashboard"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground/70 hover:bg-sidebar-accent"
+          >
             <Settings className="h-5 w-5" />
             {!collapsed && <span>Configurações</span>}
           </Link>
-          <Link to="/" className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground/70 hover:bg-sidebar-accent">
+          <Link
+            to="/"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-sidebar-foreground/70 hover:bg-sidebar-accent"
+          >
             <LogOut className="h-5 w-5" />
             {!collapsed && <span>Sair</span>}
           </Link>
@@ -91,7 +124,10 @@ export function DashboardLayout() {
       {/* Main */}
       <div className="flex-1 min-w-0 flex flex-col">
         <header className="sticky top-0 z-30 glass border-b border-border h-16 flex items-center px-4 sm:px-6 gap-3">
-          <button onClick={() => setMobileOpen(true)} className="lg:hidden p-2 rounded hover:bg-muted">
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="lg:hidden p-2 rounded hover:bg-muted"
+          >
             <Menu className="h-5 w-5" />
           </button>
           <div className="relative flex-1 max-w-md">
@@ -103,7 +139,9 @@ export function DashboardLayout() {
             <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full gradient-accent" />
           </Button>
           <div className="flex items-center gap-2">
-            <div className="h-9 w-9 rounded-full gradient-primary flex items-center justify-center text-primary-foreground text-sm font-semibold">A</div>
+            <div className="h-9 w-9 rounded-full gradient-primary flex items-center justify-center text-primary-foreground text-sm font-semibold">
+              A
+            </div>
             <div className="hidden sm:block text-sm leading-tight">
               <div className="font-semibold">Admin UÓR</div>
               <div className="text-xs text-muted-foreground">Reitoria</div>

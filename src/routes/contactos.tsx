@@ -10,10 +10,12 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/contactos")({
   component: Contactos,
-  head: () => ({ meta: [
-    { title: "Contactos — AMPLEXA EDU OS" },
-    { name: "description", content: "Fale com a equipa Amplexa × UÓR." },
-  ]}),
+  head: () => ({
+    meta: [
+      { title: "Contactos — AMPLEXA EDU OS" },
+      { name: "description", content: "Fale com a equipa Amplexa × UÓR." },
+    ],
+  }),
 });
 
 function Contactos() {
@@ -21,9 +23,13 @@ function Contactos() {
     <SiteLayout>
       <section className="py-16 hero-bg text-center">
         <div className="mx-auto max-w-3xl px-4">
-          <Badge variant="outline" className="mb-4">Contactos</Badge>
+          <Badge variant="outline" className="mb-4">
+            Contactos
+          </Badge>
           <h1 className="text-4xl sm:text-5xl font-bold">Vamos falar.</h1>
-          <p className="mt-4 text-muted-foreground">Equipa Amplexa + UÓR à distância de um clique.</p>
+          <p className="mt-4 text-muted-foreground">
+            Equipa Amplexa + UÓR à distância de um clique.
+          </p>
         </div>
       </section>
       <section className="py-16">
@@ -47,14 +53,24 @@ function Contactos() {
             ))}
           </div>
           <Card className="lg:col-span-2 p-6">
-            <form onSubmit={(e) => { e.preventDefault(); toast.success("Mensagem enviada com sucesso!"); }} className="space-y-4">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                toast.success("Mensagem enviada com sucesso!");
+              }}
+              className="space-y-4"
+            >
               <div className="grid sm:grid-cols-2 gap-4">
                 <Input placeholder="Nome" required />
                 <Input placeholder="Email" type="email" required />
               </div>
               <Input placeholder="Assunto" required />
               <Textarea placeholder="Mensagem" rows={6} required />
-              <Button type="submit" size="lg" className="w-full gradient-primary text-primary-foreground border-0 shadow-glow">
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full gradient-primary text-primary-foreground border-0 shadow-glow"
+              >
                 Enviar mensagem
               </Button>
             </form>

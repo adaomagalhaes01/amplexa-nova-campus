@@ -28,7 +28,9 @@ export function Navbar() {
             <img src={logoAmplexa} alt="Amplexa" className="h-9 w-9 rounded-md object-contain" />
           </div>
           <div className="hidden sm:block leading-tight">
-            <div className="text-[10px] uppercase tracking-widest text-muted-foreground">UÓR × Amplexa</div>
+            <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+              UÓR × Amplexa
+            </div>
             <div className="text-sm font-bold gradient-text-primary">EDU OS</div>
           </div>
         </Link>
@@ -45,14 +47,20 @@ export function Navbar() {
                 }`}
               >
                 {l.label}
-                {active && <span className="absolute inset-x-3 -bottom-px h-0.5 gradient-primary rounded-full" />}
+                {active && (
+                  <span className="absolute inset-x-3 -bottom-px h-0.5 gradient-primary rounded-full" />
+                )}
               </Link>
             );
           })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-2">
-          <Button asChild size="sm" className="gradient-primary text-primary-foreground shadow-glow border-0">
+          <Button
+            asChild
+            size="sm"
+            className="gradient-primary text-primary-foreground shadow-glow border-0"
+          >
             <Link to="/login">Acessar Plataforma</Link>
           </Button>
         </div>
@@ -80,8 +88,14 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-2 flex gap-2">
-              <Button asChild size="sm" className="flex-1 gradient-primary text-primary-foreground border-0">
-                <Link to="/login" onClick={() => setOpen(false)}>Acessar Plataforma</Link>
+              <Button
+                asChild
+                size="sm"
+                className="flex-1 gradient-primary text-primary-foreground border-0"
+              >
+                <Link to="/login" onClick={() => setOpen(false)}>
+                  Acessar Plataforma
+                </Link>
               </Button>
             </div>
           </div>
