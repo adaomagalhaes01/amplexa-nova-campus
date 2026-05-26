@@ -51,13 +51,128 @@ function Login() {
               />
             </Link>
             <h1 className="text-3xl font-bold tracking-tight text-foreground">
-              {view === "student" ? "Portal do Estudante" : "Acesso Separado"}
+              {mode === "signup"
+                ? "Criar Conta"
+                : view === "student"
+                  ? "Portal do Estudante"
+                  : "Acesso Separado"}
             </h1>
             <p className="text-muted-foreground mt-2">
-              {view === "student"
-                ? "Insira as suas credenciais para aceder ao sistema."
-                : "Acesso reservado a funcionários e professores."}
+              {mode === "signup"
+                ? "Registe-se para começar a usar a plataforma AMPLEXA EDU OS."
+                : view === "student"
+                  ? "Insira as suas credenciais para aceder ao sistema."
+                  : "Acesso reservado a funcionários e professores."}
             </p>
+          </div>
+
+          {mode === "login" && (
+            <div className="bg-card/50 p-1.5 rounded-lg flex border border-border/50 mb-6">
+              <button
+                onClick={() => setView("student")}
+                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${
+                  view === "student"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Visão de Aluno
+              </button>
+              <button
+                onClick={() => setView("separate")}
+                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${
+                  view === "separate"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Acesso Separado
+              </button>
+            </div>
+          )}
+
+          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <div className="space-y-4">
+              {mode === "signup" && (
+                <div className="space-y-2">
+                  <Label htmlFor="nome">Nome Completo</Label>
+                  <Input id="nome" placeholder="Ex: Ana Silva" required />
+                </div>
+              )}
+              <div className="space-y-2">
+                <Label htmlFor="identificador">
+                  {view === "student" ? "Número de Estudante" : "Email Institucional"}
+                </Label>
+                <Input
+                  id="identificador"
+                  placeholder={view === "student" ? "Ex: 20240001" : "nome@uor.ed.ao"}
+                  required
+                />
+              </div>
+              {mode === "signup" && view === "student" && (
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" placeholder="nome@uor.ed.ao" required />
+                </div>
+              )}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password">Palavra-passe</Label>
+                  {mode === "login" && (
+                    <a href="#" className="text-sm font-medium text-primary hover:underline">
+                      Esqueceu-se?
+                    </a>
+                  )}
+                </div>
+                <Input id="password" type="password" required />
+              </div>
+              {mode === "signup" && (
+                <div className="space-y-2">
+                  <Label htmlFor="password2">Confirmar Palavra-passe</Label>
+                  <Input id="password2" type="password" required />
+                </div>
+              )}
+            </div>
+
+            <Button
+              asChild
+              className="w-full gradient-primary text-primary-foreground font-semibold h-11"
+            >
+              <Link to={view === "student" ? "/dashboard/estudante" : "/dashboard"}>
+                {mode === "signup" ? "Criar Conta" : "Entrar"}
+              </Link>
+            </Button>
+          </form>
+
+          <div className="text-center text-sm text-muted-foreground">
+            {mode === "login" ? (
+              <>
+                Ainda não tem conta?{" "}
+                <button
+                  onClick={() => setMode("signup")}
+                  className="font-medium text-primary hover:underline"
+                >
+                  Criar Conta
+                </button>
+              </>
+            ) : (
+              <>
+                Já tem conta?{" "}
+                <button
+                  onClick={() => setMode("login")}
+                  className="font-medium text-primary hover:underline"
+                >
+                  Entrar
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
           </div>
 
           <div className="bg-card/50 p-1.5 rounded-lg flex border border-border/50 mb-6">
